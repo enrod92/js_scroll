@@ -32,7 +32,9 @@
 
 		function updateText()
 		{
-			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+			//Updated to address whitespace trimmming bug, if statement to determine whether to add normal char or &nbsp; instead of the whitespace.
+			words[word_counter][character_counter] !== " " ? el.innerHTML = el.innerHTML+words[word_counter][character_counter] : el.innerHTML = el.innerHTML+"&nbsp;";
+			character_counter++;
 
 			if(character_counter == words[word_counter].length + 1) // Added +1 since the check was reseting the variables before printing the last character
 			{
@@ -46,7 +48,7 @@
 			}
 		}
 
-		setInterval(updateText,700);
+		setInterval(updateText,300);
 
 	</script>
 
